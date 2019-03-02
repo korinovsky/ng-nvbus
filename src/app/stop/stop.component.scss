@@ -1,0 +1,15 @@
+p {
+  line-height: 2;
+
+  > span {
+    margin-right: .3rem;
+    float: left;
+
+    span {
+      background: darkgreen;
+      padding: 0 .4rem .1rem;
+      border-radius: .2rem;
+      color: white;
+    }
+  }
+}
