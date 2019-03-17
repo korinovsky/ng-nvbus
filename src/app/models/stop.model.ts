@@ -8,7 +8,7 @@ export class DayOfWeek {
   times: Array<BusTime>;
 }
 
-export class Stop {
+export class StopModel {
   name: string;
   days: Array<DayOfWeek>;
 }

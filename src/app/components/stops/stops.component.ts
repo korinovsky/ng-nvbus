@@ -1,14 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import {StopService} from "../stop.service";
-import {Stop} from "../Stop";
+import {Component, OnInit} from '@angular/core';
+import {StopService} from "../../services/stop.service";
+import {StopModel} from "../../models/stop.model";
 
 @Component({
-  selector: 'div.stops',
+  selector: 'app-stops',
   templateUrl: './stops.component.html',
   styleUrls: ['./stops.component.scss']
 })
 export class StopsComponent implements OnInit {
-  public stops: Array<Stop>;
+  public stops: Array<StopModel>;
 
   constructor(private stopService: StopService) {
   }

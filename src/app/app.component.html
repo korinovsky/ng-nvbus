@@ -1,2 +1,9 @@
-<h1>{{title}}</h1>
-<div class="stops list-group"></div>
+<mat-toolbar color="primary" class="mat-elevation-z6">
+  <button mat-button routerLink="/">{{title}}</button>
+  <span class="flex-spacer"></span>
+  <button mat-icon-button routerLink="/ticket"><mat-icon>account_balance_wallet</mat-icon></button>
+</mat-toolbar>
+
+<div class="app-content">
+  <router-outlet></router-outlet>
+</div>

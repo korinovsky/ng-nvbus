@@ -1,8 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Stop} from "../Stop";
+import {StopModel} from "../../models/stop.model";
 
 @Component({
-  selector: 'a.stop',
+  selector: 'app-stop',
   templateUrl: './stop.component.html',
   styleUrls: ['./stop.component.scss']
 })
@@ -17,7 +17,7 @@ export class StopComponent implements OnInit {
     return hours + ":" + (minutes < 10 ? "0" : "") + minutes;
   }
 
-  @Input() public stop: Stop;
+  @Input() public stop: StopModel;
   public arrivals: Array<Arrival>;
 
   constructor() {

@@ -1,0 +1,6 @@
+<mat-card>
+  <mat-card-title>{{stop.name}}</mat-card-title>
+  <mat-card-content>
+    <span *ngFor="let arrival of arrivals">{{arrival.time}} <span>{{arrival.bus}}</span> </span>
+  </mat-card-content>
+</mat-card>

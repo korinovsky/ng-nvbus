@@ -1,17 +1,17 @@
-import { Injectable } from '@angular/core';
-import json from './data/stops.json';
-import {BusTime, DayOfWeek, Stop} from "./Stop";
+import {Injectable} from '@angular/core';
+import json from '../data/stops.json';
+import {BusTime, DayOfWeek, StopModel} from "../models/stop.model";
 
 @Injectable({
   providedIn: 'root'
 })
 export class StopService {
 
-  private stops: Array<Stop> = new Array<Stop>();
+  private stops: Array<StopModel> = new Array<StopModel>();
 
   constructor() {
     Object.keys(json).forEach((stopName) => {
-      let stop = new Stop();
+      let stop = new StopModel();
       stop.name = stopName;
       stop.days = new Array<DayOfWeek>();
       this.pushDayOfWeek(stop, stopName);
