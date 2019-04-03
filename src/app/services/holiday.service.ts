@@ -18,13 +18,13 @@ export class HolidayService {
   }
 
   private holidays: HolidayModel[] = [
-    {date: moment("5/1/2019"), holiday: true},
-    {date: moment("5/2/2019"), holiday: true},
-    {date: moment("5/3/2019"), holiday: true},
-    {date: moment("5/9/2019"), holiday: true},
-    {date: moment("5/10/2019"), holiday: true},
-    {date: moment("6/12/2019"), holiday: true},
-    {date: moment("11/4/2019"), holiday: true},
+    {date: moment("2019-05-01"), holiday: true},
+    {date: moment("2019-05-02"), holiday: true},
+    {date: moment("2019-05-03"), holiday: true},
+    {date: moment("2019-05-09"), holiday: true},
+    {date: moment("2019-05-10"), holiday: true},
+    {date: moment("2019-06-12"), holiday: true},
+    {date: moment("2019-11-04"), holiday: true},
   ];
 
   private isWorkDay(date: Moment): boolean {

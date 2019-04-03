@@ -17,7 +17,6 @@ export class StopService {
       this.pushDayOfWeek(stop, stopName);
       this.stops.push(stop);
     });
-    console.log(this.stops);
   }
 
   private pushDayOfWeek(stop, stopName) {

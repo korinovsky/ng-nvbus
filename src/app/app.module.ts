@@ -15,14 +15,15 @@ import {
 } from "@angular/material";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatMomentDateModule} from "@angular/material-moment-adapter";
-import {CookieService} from "angular2-cookie/core";
 import {RouterModule, Routes} from "@angular/router";
+import {CookieService} from "ngx-cookie-service";
 
 const appRoutes: Routes = [
   {path: '', component: StopsComponent},
-  {path: 'ticket',      component: TicketComponent},
+  {path: 'ticket', component: TicketComponent},
   {path: '**', redirectTo: ''}
 ];
+
 @NgModule({
   declarations: [
     AppComponent,

@@ -2,8 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {HolidayService} from "../../services/holiday.service";
 import moment, {Moment} from "moment";
 import {CardModel} from "../../models/card.model";
-import {CookieService} from "angular2-cookie/core";
 import {Optional} from "typescript-optional";
+import {CookieService} from "ngx-cookie-service";
 
 @Component({
   selector: 'app-ticket',
@@ -30,18 +30,22 @@ export class TicketComponent implements OnInit {
 
     const buyDateDefault = moment().startOf('day');
     this.buyDate = Optional.ofNullable(this.cookieService.get('buyDate'))
+      .filter(value => value.length > 0)
       .map(value => moment(value))
       .orElse(buyDateDefault);
     if (this.buyDate.isBefore(buyDateDefault)) {
       this.buyDate = buyDateDefault;
     }
     this.ticketsPerDay = Optional.ofNullable(this.cookieService.get('ticketsPerDay'))
+      .filter(value => value.length > 0)
       .map(value => parseInt(value))
       .orElse(4);
     this.startDate = Optional.ofNullable(this.cookieService.get('startDate'))
+      .filter(value => value.length > 0)
       .map(value => moment(value))
       .orNull();
     this.endDate = Optional.ofNullable(this.cookieService.get('endDate'))
+      .filter(value => value.length > 0)
       .map(value => moment(value))
       .orNull();
     this.calculateCost();
@@ -78,15 +82,16 @@ export class TicketComponent implements OnInit {
   }
 
   private saveField(field: string) {
-    Optional.ofNullable(this[field]).ifPresentOrElse(
-      value => this.cookieService.put(field,
-        typeof value === 'object'
-          ? value.toISOString()
-          : (
-            value === ""
-              ? this.cookieService.remove(field)
-              : value.toString(10))),
-      () => this.cookieService.remove(field));
+    Optional.ofNullable(this[field]).ifPresentOrElse(value => {
+        if (moment.isMoment(value)) {
+          this.cookieService.set(field, (<Moment>value).format("YYYY-MM-DD"));
+        } else if (value === "") {
+          this.cookieService.delete(field)
+        } else {
+          this.cookieService.set(field, value.toString(10));
+        }
+      },
+      () => this.cookieService.delete(field));
   }
 
   private costDiff(cardDays: CardModel, cardTickets: CardModel) {
