@@ -1,9 +1,11 @@
 <mat-toolbar color="primary" class="mat-elevation-z6">
-  <button mat-button routerLink="/">{{title}}</button>
-  <span class="flex-spacer"></span>
-  <button mat-icon-button routerLink="/ticket"><mat-icon>account_balance_wallet</mat-icon></button>
+  <div class="container">
+    <button mat-button routerLink="/">{{title}}</button>
+    <span class="flex-spacer"></span>
+    <button mat-icon-button routerLink="/ticket"><mat-icon>account_balance_wallet</mat-icon></button>
+  </div>
 </mat-toolbar>
 
-<div class="app-content">
+<div class="app-content container my-4">
   <router-outlet></router-outlet>
 </div>

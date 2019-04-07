@@ -1,16 +1,14 @@
 import {Injectable} from '@angular/core';
-import json from '../data/stops.json';
+import stops from '../data/stops';
 import {BusTime, DayOfWeek, StopModel} from "../models/stop.model";
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class StopService {
 
   private stops: Array<StopModel> = new Array<StopModel>();
 
   constructor() {
-    Object.keys(json).forEach((stopName) => {
+    Object.keys(stops).forEach((stopName) => {
       let stop = new StopModel();
       stop.name = stopName;
       stop.days = new Array<DayOfWeek>();
@@ -20,7 +18,7 @@ export class StopService {
   }
 
   private pushDayOfWeek(stop, stopName) {
-    Object.keys(json[stopName]).forEach((daysCode) => {
+    Object.keys(stops[stopName]).forEach((daysCode) => {
       let day = new DayOfWeek();
       stop.days.push(day);
       day.code = daysCode;
@@ -30,7 +28,7 @@ export class StopService {
   }
 
   private pushBusStop(day, stopName, daysCode) {
-    json[stopName][daysCode].forEach((elem) => {
+    stops[stopName][daysCode].forEach((elem) => {
       let time = new BusTime();
       day.times.push(time);
       time.time = elem.time;
@@ -40,5 +38,9 @@ export class StopService {
 
   getStops() {
     return this.stops;
+  }
+
+  getStop(name: string) {
+    return this.stops.find(stop => stop.name === name);
   }
 }

@@ -1,23 +1,22 @@
-@import '../../../variable';
-
 .mat-card {
-  margin-bottom: $padding;
-
   .mat-card-content {
     line-height: 2;
 
-    > span {
-      margin-right: .3rem;
+    div {
+      display: inline-block;
+      margin-right: .6em;
 
       span {
-        background: darkgreen;
-        padding: 0 .4rem .1rem;
+        line-height: 1;
+        display: inline-block;
+        padding: .2em .4em;
         border-radius: .2rem;
         color: white;
+        background: gray;
+        &.future {
+          background: darkgreen;
+        }
       }
     }
   }
-}
-:host:last-child .mat-card {
-  margin-bottom: 0;
 }

@@ -21,6 +21,7 @@ import {CookieService} from "ngx-cookie-service";
 const appRoutes: Routes = [
   {path: '', component: StopsComponent},
   {path: 'ticket', component: TicketComponent},
+  {path: ':stop', component: StopComponent},
   {path: '**', redirectTo: ''}
 ];
 
@@ -56,4 +57,5 @@ const appRoutes: Routes = [
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

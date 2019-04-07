@@ -1,28 +1,32 @@
-<mat-card>
+<mat-card class="mb-4">
   <mat-card-title>Проезд</mat-card-title>
   <mat-card-content>
     <mat-form-field>
-      <input matInput [matDatepicker]="buyDatepicker" placeholder="Дата покупки" [(ngModel)]="buyDate"
+      <mat-label>Дата покупки</mat-label>
+      <input matInput [matDatepicker]="buyDatepicker" [(ngModel)]="buyDate"
              (dateChange)="calculateCost()">
       <mat-datepicker-toggle matSuffix [for]="buyDatepicker"></mat-datepicker-toggle>
       <mat-datepicker #buyDatepicker></mat-datepicker>
     </mat-form-field>
     <mat-form-field>
-      <mat-select placeholder="Поездок в день" [(ngModel)]="ticketsPerDay" (ngModelChange)="calculateCost()">
+      <mat-label>Поездок в день</mat-label>
+      <mat-select [(ngModel)]="ticketsPerDay" (ngModelChange)="calculateCost()">
         <mat-option *ngFor="let value of [2, 4, 6]" [value]="value">
           {{value}}
         </mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field>
-      <input matInput [matDatepicker]="startDatepicker" placeholder="Начало отпуска" [(ngModel)]="startDate"
+      <mat-label>Начало отпуска</mat-label>
+      <input matInput [matDatepicker]="startDatepicker" [(ngModel)]="startDate"
              [max]="endDate"
              (dateChange)="calculateCost()">
       <mat-datepicker-toggle matSuffix [for]="startDatepicker"></mat-datepicker-toggle>
       <mat-datepicker #startDatepicker></mat-datepicker>
     </mat-form-field>
     <mat-form-field>
-      <input matInput [matDatepicker]="endDatepicker" placeholder="Конец отпуска" [(ngModel)]="endDate"
+      <mat-label>Конец отпуска</mat-label>
+      <input matInput [matDatepicker]="endDatepicker" [(ngModel)]="endDate"
              [min]="startDate"
              (dateChange)="calculateCost()">
       <mat-datepicker-toggle matSuffix [for]="endDatepicker"></mat-datepicker-toggle>

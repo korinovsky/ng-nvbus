@@ -2,16 +2,14 @@ import {Injectable} from '@angular/core';
 import moment, {Moment} from "moment";
 import {HolidayModel} from "../models/holiday.model";
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class HolidayService {
 
   workDays(buyDate: moment.Moment, days: number, startDate?: Moment, endDate?: Moment) {
     let date = buyDate.clone();
     let workDays = 0;
     for (let i = 0; i < days; i++) {
-      workDays += +(this.isWorkDay(date) && !this.isRest(date, startDate, endDate));
+      workDays += +(this.isWorkDay(date) && !HolidayService.isRest(date, startDate, endDate));
       date.add(1, 'days');
     }
     return workDays;
@@ -33,7 +31,7 @@ export class HolidayService {
     return [1, 2, 3, 4, 5].includes(date.isoWeekday());
   }
 
-  private isRest(date: Moment, startDate?: Moment, endDate?: Moment) {
+  private static isRest(date: Moment, startDate?: Moment, endDate?: Moment) {
     if (startDate) {
       if (endDate) {
         return date.isBetween(startDate, endDate, null, '[]');
